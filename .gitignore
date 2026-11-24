@@ -1,0 +1,6 @@
+qa/
+sources/
+scripts/screenshot.py
+__pycache__/
+*.pyc
+.DS_Store

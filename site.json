@@ -1,0 +1,6 @@
+{
+  "service": "3분 데브",
+  "tagline": "해외 개발 브리핑",
+  "description": "Hacker News와 GitHub 트렌딩에서 고른 해외 개발 소식을 3줄 요약과 한 줄 평으로 정리합니다.",
+  "baseUrl": "https://ijwoo.github.io/dev-morning"
+}

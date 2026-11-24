@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3분 데브 — 해외 개발 브리핑</title>
+    <link>https://ijwoo.github.io/dev-morning/</link>
+    <description>Hacker News와 GitHub 트렌딩에서 고른 해외 개발 소식을 3줄 요약과 한 줄 평으로 정리합니다.</description>
+    <language>ko</language>
+    <atom:link href="https://ijwoo.github.io/dev-morning/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Nov 2026 08:00:00 +0900</lastBuildDate>
+    <item>
+      <title>레이디버드, 자체 엔진 브라우저 알파 공개</title>
+      <link>https://ladybird.org/posts/alpha/</link>
+      <guid isPermaLink="false">2026-11-24-1-https://ladybird.org/posts/alpha/</guid>
+      <category>Hacker News</category>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;Chromium도 Gecko도 아닌 자체 엔진을 밑바닥부터 만든 브라우저 레이디버드가 macOS·Linux용 알파 빌드를 내놨다. 브라우저 껍데기는 소박하지만 쓸 만한 수준이라고 저자 안드레아스 클링은 적었다.&lt;/p&gt;&lt;p&gt;알파는 롤링 채널이라 자동 업데이트가 계속 들어온다. 깨진 사이트는 브라우저 안에서 바로 신고할 수 있고, 크래시 리포트는 읽어보고 보낼지 직접 정한다.&lt;/p&gt;&lt;p&gt;WebDriver와 Firefox DevTools 프로토콜을 지원해 자동화 테스트에 붙일 수 있다. 대신 보안은 아직 아무것도 보장하지 않는다고 문서에 못 박았다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 우리 서비스가 세 번째 엔진에서 어떻게 깨지는지 한 번 열어보는 것만으로, 공짜 회귀 테스트 한 칸이 생긴다.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 2,082 · 댓글 492 · 11-24 01:13&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GLM-5.4, 레이어를 두 번 도는 루프 트랜스포머로 코딩 성능 끌어올려</title>
+      <link>https://z.ai/blog/glm-5.4</link>
+      <guid isPermaLink="false">2026-11-24-2-https://z.ai/blog/glm-5.4</guid>
+      <category>Hacker News</category>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;Z.ai가 첫 루프 트랜스포머 기반 플래그십 GLM-5.4를 공개했다. 같은 가중치 블록을 두 번 통과시켜, 파라미터를 늘리지 않고 추론 깊이를 사는 구조다.&lt;/p&gt;&lt;p&gt;GLM-5 기반 750B 모델의 28개 레이어를 2회 반복하도록 개조했고, 반복마다 토큰별 게이트로 업데이트 세기를 조절하고 KV 캐시와 어텐션 인덱스는 1회차 것을 재사용해 배포 비용을 눌렀다고 밝혔다.&lt;/p&gt;&lt;p&gt;회사 주장으로는 2T~3T급 모델에 견주는 성능이지만, 답이 지나치게 길게 늘어지는 &amp;#x27;마라톤 사고&amp;#x27; 경향이 남아 있다고 스스로 인정했다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 코딩 모델 후보가 하나 늘었다. 수치는 벤더 자체 측정이니 결제 전에 내 저장소에서 한 번 돌려보는 게 순서다.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 1,138 · 댓글 371 · 11-23 19:06&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>27B 모델을 10GB로, NariQ가 코딩 에이전트 작업에서 BF16급 유지</title>
+      <link>https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF</link>
+      <guid isPermaLink="false">2026-11-24-3-https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF</guid>
+      <category>Hacker News</category>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;나리랩스가 Qwen3.8-27B를 3비트 10.1GB GGUF로 줄인 NariQ v1을 공개했다. 실제 코딩 에이전트 트레이스로 캘리브레이션한 트렐리스 부호화 양자화다.&lt;/p&gt;&lt;p&gt;자체 측정에서 3비트와 2.5비트 파일이 장기 에이전트 작업·수학·이미지 이해에서 BF16과 같은 수준을 냈고, 2비트는 수학과 에이전트 작업에서 확 떨어졌다.&lt;/p&gt;&lt;p&gt;전용 llama.cpp 포크가 필요하고 퀵스타트 스크립트는 리눅스·엔비디아 드라이버 570 이상 기준이다. 24GB GPU에서 131k 컨텍스트가 간신히 들어간다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 맥 미니에서 로컬 에이전트를 굴리는 쪽이라면 27B급이 10GB로 줄었다는 사실부터 크다. 다만 포크가 Metal을 지원하는지 먼저 확인해야 한다.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 175 · 댓글 35 · 11-23 22:42&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SSH 개인 키, 디스크에 두지 마세요</title>
+      <link>https://jola.dev/posts/you-cant-afford-ssh-keys-disk</link>
+      <guid isPermaLink="false">2026-11-24-4-https://jola.dev/posts/you-cant-afford-ssh-keys-disk</guid>
+      <category>Hacker News</category>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;셀프호스팅을 오래 해온 개발자가 개인 키를 디스크에서 걷어내고 비밀번호 관리자(Bitwarden) SSH 에이전트로 옮긴 과정을 정리했다.&lt;/p&gt;&lt;p&gt;볼트에 사본이 있어도 ssh-add로 메모리에 올린 키 파일이 디스크에 그대로 있으면, 악성 코드의 파일 스캔 한 번에 통째로 빠져나간다.&lt;/p&gt;&lt;p&gt;~/.ssh/config에 IdentityAgent, 셸 설정에 SSH_AUTH_SOCK 한 줄씩만 추가하면 되고, 볼트가 잠길 때마다 승인하도록 주기를 정할 수 있다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 오늘 바로 따라할 수 있는 항목. 노트북 키 하나만 옮겨도 사고 반경이 크게 줄어든다.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 180 · 댓글 116 · 11-23 18:55&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>앱스토어 반려, 제출 전에 잡는 오픈 플레이북</title>
+      <link>https://github.com/mjmirza/app-store-compliance</link>
+      <guid isPermaLink="false">2026-11-24-5-https://github.com/mjmirza/app-store-compliance</guid>
+      <category>GitHub</category>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;애플·구글 심사에서 반려되는 원인 124가지를 가이드라인 번호와 수정법까지 묶은 오픈 플레이북이다. 스캔 스크립트가 프로젝트를 훑어 치명적 위험을 먼저 짚어준다.&lt;/p&gt;&lt;p&gt;데모 계정과 개인정보 선언처럼 실제 반려를 가장 많이 만드는 두 항목을 맨 앞에 뒀고, 스캔이 증명할 수 있는 것과 사람이 직접 봐야 하는 것을 구분해 적었다.&lt;/p&gt;&lt;p&gt;클로드 코드·코덱스·커서 등 13가지 AI 코딩 도구에 훅으로 붙여, 업로드 명령이 나가기 전에 검사를 세울 수 있다. 설치 스크립트 한 줄이면 된다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 혼자 앱을 올리는 사람에게는 심사 대기 일주일을 아끼는 보험이다. 제출 전 스캔 한 번, 습관으로 붙여둘 만하다.&lt;/p&gt;&lt;p&gt;GitHub · Shell · 별 5,382 · 오늘 +936&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CLI-Anything, 데스크톱 앱을 에이전트가 다룰 수 있게</title>
+      <link>https://github.com/HKUDS/CLI-Anything</link>
+      <guid isPermaLink="false">2026-11-24-6-https://github.com/HKUDS/CLI-Anything</guid>
+      <category>GitHub</category>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;홍콩대 데이터지능연구실(HKUDS)이 &amp;#x27;모든 소프트웨어를 에이전트 친화적으로&amp;#x27;라는 목표로 CLI 하네스를 만들고 모으는 프로젝트다. 앱마다 명령줄 인터페이스를 붙여 에이전트가 직접 조작하게 한다.&lt;/p&gt;&lt;p&gt;CLI-Hub에서 cli-anything-hub를 설치한 뒤 cli-hub install &amp;lt;이름&amp;gt;으로 커뮤니티가 만든 CLI를 설치·관리한다. CAD, 3D 씬, 다이어그램, 게임플레이, 자막까지 실제 산출물 데모 18개를 걸어뒀다.&lt;/p&gt;&lt;p&gt;아파치 2.0, 파이썬 3.10 이상. 테스트 2,461개를 통과했다고 밝히고 arXiv 기술 보고서도 함께 공개했다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 내 앱에 CLI 한 겹만 씌워두면 다음 사용자는 사람이 아니라 에이전트가 될 수 있다. 사이드 프로젝트에 붙여볼 만한 얇은 실험.&lt;/p&gt;&lt;p&gt;GitHub · Python · 별 64,239 · 오늘 +1,075&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
