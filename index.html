@@ -32,7 +32,40 @@
   <main class="main">
 
     <header class="masthead">
-      <p class="date" id="date">2026. 11. 24 화요일</p>
+      <div class="dateline">
+        <div class="date-wrap">
+          <button class="date-btn" id="date-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="calendar">
+            <span class="date" id="date">2026. 11. 24 화요일</span>
+            <svg class="caret" width="9" height="9" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.2 6.4 8 10.2l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="calendar" id="calendar" role="dialog" aria-label="발행일 달력" hidden>
+            <div class="cal-head">
+              <button class="cal-arrow" id="cal-prev" type="button" aria-label="이전 달">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9.4 4.2 5.6 8l3.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="cal-label" id="cal-label">2026년 11월</span>
+              <button class="cal-arrow" id="cal-next" type="button" aria-label="다음 달">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6.6 4.2 10.4 8l-3.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="cal-week" aria-hidden="true">
+              <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <button class="step-btn" id="prev-issue" type="button" aria-label="이전 호">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9.2 4.4 5.8 8l3.4 3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="step-btn" id="next-issue" type="button" aria-label="다음 호">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6.8 4.4 10.2 8l-3.4 3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
       <h1 id="masthead-title">오늘의 해외 개발 소식</h1>
     </header>
 
@@ -43,7 +76,7 @@
     </nav>
 
     <div class="feed" id="feed" aria-live="polite">
-      <noscript><p class="fallback">이 피드는 자바스크립트로 data/2026-11-24.json 을 읽어 그립니다. RSS(feed.xml)로도 같은 내용을 받을 수 있습니다.</p></noscript>
+      <noscript><p class="fallback">이 피드는 자바스크립트로 data/ 의 JSON을 읽어 그립니다. RSS(feed.xml)로도 같은 내용을 받을 수 있습니다.</p></noscript>
     </div>
 
     <footer class="footer">
