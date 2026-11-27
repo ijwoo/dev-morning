@@ -6,7 +6,55 @@
     <description>Hacker News와 GitHub 트렌딩에서 고른 해외 개발 소식을 3줄 요약과 한 줄 평으로 정리합니다.</description>
     <language>ko</language>
     <atom:link href="https://ijwoo.github.io/dev-morning/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 27 Nov 2026 08:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 08:00:00 +0900</lastBuildDate>
+    <item>
+      <title>AI 덕분에 셀프호스팅이 다시 재미있어졌다</title>
+      <link>https://janlukas.blog/posts/ai-self-hosting</link>
+      <guid isPermaLink="false">2026-11-28-1-https://janlukas.blog/posts/ai-self-hosting</guid>
+      <category>Hacker News</category>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;오래 셀프호스팅을 해온 개발자가 최근 몇 달 사이 다시 재미가 붙은 이유로 AI 코딩 에이전트를 꼽았다. 인프라 설정을 대부분 Git 저장소의 Docker Compose 파일과 스크립트로 관리해둔 덕에, 에이전트에게 다른 코드 프로젝트 다루듯 인프라를 맡길 수 있었다. 릴리스 노트를 읽고 문제를 푸는 저녁이 아까워 미뤄두던 변경을 이제는 즉흥적으로 해본다는 것.&lt;/p&gt;&lt;p&gt;오래 흥미만 있고 손대지 못한 기술에도 손이 간다. NixOS를 홈서버에 본격적으로 쓰기 시작했고, VPS용으로는 데비안 기반 bootc 이미지를 직접 만들어 OS 설정 전체를 Git에서 빌드한다. AI 도움을 받고도 반나절 걸렸는데, 없었으면 최소 일주일은 걸렸을 일이라고 적었다. 업데이트는 Renovate가 PR로 올리고, 머지하면 GitHub Actions나 Forgejo Actions가 빌드와 배포까지 처리해 푸시 한 번이면 끝난다.&lt;/p&gt;&lt;p&gt;딱 맞는 오픈소스가 없는 작은 문제는 이제 직접 만든다. 청구서, 전자문서, 리눅스 ISO를 자동으로 받아오는 도구를 Go로 만들었다. 다만 서비스가 늘면 유지보수도 늘고, AI가 만든 코드도 버그와 보안 문제, 기술 부채에서 자유롭지 않으며, 에이전트가 바꾼 설정을 이해할 책임은 여전히 본인에게 있다고 못 박았다. 만들 수 있게 된 만큼 정말 만들 가치가 있는지를 더 자주 물어야 한다는 결론이다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 인프라가 Git에 있으면 에이전트가 손댈 수 있는 범위가 생긴다. 대신 에이전트가 바꾼 설정을 읽는 일까지 자동화되지는 않는다.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 1,067 · 댓글 499 · 11-27 06:47&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>결제 페이지 카드 탈취, WebRTC로 숨어서 오간다</title>
+      <link>https://www.infohawk.com/news/2026-11-27-black-friday-webrtc-skimmer</link>
+      <guid isPermaLink="false">2026-11-28-2-https://www.infohawk.com/news/2026-11-27-black-friday-webrtc-skimmer</guid>
+      <category>Hacker News</category>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;블랙프라이데이 직전에 Lascana, Samsonite, American Tourister, Revolve, FWRD 온라인 스토어에 카드 정보 탈취 스크립트가 심어져 있었다고 InfoHawk가 보도했다. 신고를 받은 다섯 곳 모두 11월 24~25일 사이 코드를 제거했다. 리포터는 Lascana 체크아웃에서 테스트 카드 정보가 실제로 외부로 전송되는 것을 확인했고, 카드 번호와 유효기간, 보안 코드, 이름, 주소, 전화, 메일까지 빠져나가도록 만들어져 있었다.&lt;/p&gt;&lt;p&gt;방식이 새롭다. 스크립트를 싣는 것도, 훔친 정보를 보내는 것도 WebRTC 데이터 채널을 쓴다. 결제 페이지의 CSP connect-src가 막을 수 있는 일반 요청 두 번으로 Cloudflare TURN 릴레이 정보를 받은 뒤, 그 채널로 코드를 청크로 내려 SHA-256 검증 후 eval로 실행한다. 트래픽이 Cloudflare 릴레이를 타서 진짜 목적지가 가려지고, 모바일이나 터치 화면의 체크아웃에서만 동작해 데스크톱 검사나 홈페이지 스캔에는 걸리지 않는다. 결제 검증 전에 정보가 나가므로 주문이 거절되거나 취소돼도 쇼퍼는 이상을 느끼지 못한다.&lt;/p&gt;&lt;p&gt;진입 경로는 마케팅 픽셀(Quorum), 쿠키 배너 설정(Seers), 리테일러 자체 CDN 파일 세 가지였다. 대응책은 결제 페이지마다 connect-src에 실제로 쓰는 호스트만 나열하는 것이다. 이 두 요청이 막히면 어떤 파일이 변조됐든 스크립트가 도착하지 못한다. 보안팀에는 S3 버킷의 Insds.js와 gtage.js, 픽셀 스크립트 마지막 줄, Seers 배너 설정의 URL 필드에 숨은 이미지가 있는지 확인하라고 권한다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 결제 페이지 CSP 한 줄이 카드 탈취 키트를 통째로 막는 사례다. 돈을 받는 페이지가 있다면 connect-src부터 좁혀두자.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 339 · 댓글 186 · 11-28 00:40&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LLM 시대의 코드 품질, 주류 검증 언어가 필요하다</title>
+      <link>https://blainehansen.me/post/mainstream-verifiable-language/</link>
+      <guid isPermaLink="false">2026-11-28-3-https://blainehansen.me/post/mainstream-verifiable-language/</guid>
+      <category>Hacker News</category>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;LLM 때문에 소프트웨어 엔지니어링 품질이 급락하고 있고 계속 나빠질 이유밖에 안 보인다는 진단에서 출발한다. 예전에도 대충 짜는 게 기본값이었는데, 지금은 그 관행을 LLM 속도로 가속하고 있다는 것. 저자는 답이 형식 검증(formal verification)을 주류로 끌어들이는 데 있다고 보고, 직접 만들던 Magmide 프로젝트의 방향을 다시 정리해 공개했다.&lt;/p&gt;&lt;p&gt;원래 계획은 증명 보조기와 어셈블리 수준 기반 언어를 새로 만드는 것이었지만, Lean이 빠르게 발전하는데 새 증명 보조기를 만들 이유가 없고 어셈블리 언어는 산업 채택이 불가능하다는 걸 인정하고 접었다. 지금 구상은 WASM(GC 기능)으로 컴파일하고, 빌림 검사기 없는 Rust풍 타입 시스템에 SMT 기반 리퀴드 타입과 Flow Effects로 시작해 나중에 Lean을 증명 계층으로 얹는 식이다. &amp;#x27;그냥 JS/TS&amp;#x27;에 권한 계층을 얹어 자리 잡은 Deno를 참조 모델로 든다.&lt;/p&gt;&lt;p&gt;핵심은 도구가 아니라 문화다. 브라우저부터 임베디드까지 어떤 환경에서도 검증이 가능해야 하고, 산업 현장 엔지니어가 검증된 코드가 가능하다는 걸 알고 LLM에게 그렇게 쓰라고 말할 수 있어야 하며, 무엇이 증명됐는지 읽을 줄 알아야 한다. Lean 개발자 레오나르도 드 모우라의 &amp;#x27;증명 보조기는 증명이 맞다는 것만 보장하고, 정리가 의도한 바를 담았는지는 사람이 읽어 확인해야 한다&amp;#x27;는 말을 인용한다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 품질 문제를 모델 성능으로 풀려는 접근에 대한 반론이다. 당장은 AI가 만든 부분과 내가 책임질 부분의 경계를 문서로 남기는 것부터.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 294 · 댓글 290 · 11-27 14:22&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Convex 스킬, 사용자 아이디어를 몰래 외부로 보내</title>
+      <link>https://github.com/convex/convex-backend-skill/issues/64</link>
+      <guid isPermaLink="false">2026-11-28-4-https://github.com/convex/convex-backend-skill/issues/64</guid>
+      <category>Hacker News</category>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;Convex 공식 백엔드 스킬 저장소에 올라온 공개 이슈가, Anthropic 공식 플러그인 마켓에 실린 이 플러그인의 스킬 세 개를 문제 삼는다. quickstart 스킬은 사용자가 한 문장으로 적은 프로젝트 아이디어를 basic-anteater-667.convex.site로 POST하면서 주석에 telemetry라고만 적었다. 사용자는 아이디어가 기계 밖으로 나간다는 사실을 통지받지 못한다.&lt;/p&gt;&lt;p&gt;add 스킬은 같은 호스트에서 받은 스크립트를 곧장 bash로 넘긴다. labs-quickstart는 부트스트랩 다운로드와 실행을 두 번의 Bash 호출로 쪼개면서, 한 명령에서 다운로드와 실행을 같이 하면 하네스의 안전 분류기가 막는 모양이라 그렇게 나눴다고 주석에 적어뒀다. 이슈 작성자는 팀이 온보딩을 매끄럽게 하려는 의도로 읽는다면서도, 마지막 항목은 사용자가 골라둔 안전 검사를 피하도록 에이전트에 지시하는 것이라 선을 넘는다고 지적한다.&lt;/p&gt;&lt;p&gt;요구는 세 가지다. 아이디어를 보내기 전에 알리고 선택으로 만들 것, 스크립트는 플러그인에 넣거나 해시로 고정할 것, 분류기 관련 문구는 빼서 다운로드와 실행 단계를 그대로 승인받게 할 것. 10월 26일 제기돼 11월 27일 갱신됐고 이슈는 아직 열려 있다. 같은 날 Hacker News 2위에 오르며 &amp;#x27;이제 Convex에 돈 내려던 참이었는데&amp;#x27; 같은 댓글이 붙었다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 플러그인 마켓에서 받은 스킬도 남의 코드다. 설치 전에 SKILL.md에서 원격 POST와 curl 파이프 bash를 먼저 찾는 습관이 필요하다.&lt;/p&gt;&lt;p&gt;Hacker News · 포인트 173 · 댓글 52 · 11-28 03:02&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>파이어크롤, 웹 스크레이프를 로컬 바이너리 하나로</title>
+      <link>https://github.com/firecrawl/firecrawl</link>
+      <guid isPermaLink="false">2026-11-28-5-https://github.com/firecrawl/firecrawl</guid>
+      <category>GitHub</category>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;에이전트에 웹 지식을 먹이는 도구. 이번에 저장소가 Firecrawl Local을 내놨는데, 웹사이트를 깔끔한 마크다운으로 바꾸는 일을 바이너리 하나로 처리하고 MCP 서버로 에이전트에 붙으며 Firecrawl API를 localhost:3002에 그대로 서빙한다. 데이터베이스도 큐도 컨테이너도 필요 없다. 설치에는 러스트와 C 컴파일러가 필요하다.&lt;/p&gt;&lt;p&gt;firecrawl-local init을 실행하면 Claude Code, Claude Desktop, Cursor, Windsurf, Gemini CLI, Codex를 찾아 각각에 MCP 서버로 등록한다. 설정 파일은 먼저 백업하고, MCP 서버 자체는 Node 22 이상을 요구한다. scrape, crawl, map, batch scrape는 내 기계에서 돌고 검색이나 구조화 출력 같은 나머지 도구는 클라우드로 간다. 코드에 쓰던 Firecrawl SDK는 API 주소만 localhost로 바꾸면 그대로 동작한다.&lt;/p&gt;&lt;p&gt;JS 렌더링은 이미 깔린 Chrome이나 Chromium을 쓰고 PDF와 오피스 문서도 로컬에서 파싱한다. 기본값에서는 로컬에서 안 되는 단일 페이지 스크레이프만 계정 없이 제한된 속도로 클라우드가 대신하고 결과에 source: firecrawl-cloud로 표시되며, FIRECRAWL_CLOUD=off로 전부 로컬에 고정할 수 있다. 클라우드 쪽은 550개 이상 데이터 제공자와 Interact, Agent를 더한다. AGPL-3.0.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 모아의 웹 읽기를 로컬 MCP로 돌리면 페이지 원문이 밖으로 덜 나간다. 다만 init은 감지된 모든 도구 설정을 건드리니 백업부터 확인하자.&lt;/p&gt;&lt;p&gt;GitHub · TypeScript · 별 211,633 · 오늘 +833&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>64M 모델을 2시간에 직접 학습하는 미니마인드</title>
+      <link>https://github.com/jingyaogong/minimind</link>
+      <guid isPermaLink="false">2026-11-28-6-https://github.com/jingyaogong/minimind</guid>
+      <category>GitHub</category>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0900</pubDate>
+      <description>&lt;p&gt;64M 파라미터 초소형 언어모델을 밑바닥부터 학습하는 프로젝트다. GPT-3의 약 2700분의 1 크기로, 개인용 GPU에서도 학습과 재현이 끝나게 하는 게 목표다. README는 &amp;#x27;2시간&amp;#x27;을 3090 한 장에서 SFT 1에폭을 돌린 실측, &amp;#x27;3위안&amp;#x27;을 그 시간대 GPU 대여비라고 못 박아, 마케팅 문구가 아니라 조건이 붙은 숫자임을 밝혔다.&lt;/p&gt;&lt;p&gt;핵심은 구조와 학습 파이프라인 전체를 PyTorch 원문으로 직접 구현해 공개한 점이다. 최신 minimind-3는 Qwen3와 Qwen3-MoE 구조에 맞춰 Dense 64M, MoE 198M-A64M이고, 토크나이저 학습부터 프리트레인, SFT, LoRA, DPO, PPO와 GRPO와 CISPO, Tool Use, Agentic RL, 증류까지 코드와 데이터가 함께 들어 있다. transformers와 trl, peft의 고수준 인터페이스에 기대지 않고 직접 짠 LoRA와 DPO 구현도 있다.&lt;/p&gt;&lt;p&gt;llama.cpp, vllm, ollama, Llama-Factory와 호환되고, OpenAI API 규격을 흉내 내는 서버와 Streamlit 웹 UI, C-Eval과 C-MMLU와 OpenBookQA 평가 스크립트를 제공한다. Apache-2.0, 파이썬. 다만 기본 설정대로 돌리려면 CUDA 환경이 전제이고, 맥에서는 MPS나 CPU로도 돌지만 속도와 호환성 차이가 아주 크다고 README가 적고 있다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;한 줄 평&lt;/strong&gt; 맥 미니에서 모델을 굴리는 것과 학습하는 것은 다른 일이지만, 64M짜리로 파이프라인 전체를 한 번 훑으면 토크나이저와 SFT 데이터, 툴콜이 어떻게 맞물리는지 손에 잡힌다.&lt;/p&gt;&lt;p&gt;GitHub · Python · 별 72,188 · 오늘 +667&lt;/p&gt;</description>
+    </item>
     <item>
       <title>구글 워크스페이스, AI 에이전트는 MCP로만…내년 2월부터 강제</title>
       <link>https://techstackups.com/articles/google-workspace-ai-agents-mcp/</link>
